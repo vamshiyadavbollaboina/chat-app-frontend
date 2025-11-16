@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiChevronRight, FiChevronLeft, FiPlus, FiTrash2 } from 'react-icons/fi';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://chat-app-backend-topaz-iota.vercel.app/api';
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const [sessions, setSessions] = useState([]);
