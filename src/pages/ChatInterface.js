@@ -7,10 +7,8 @@ import TableResponse from '../components/TableResponse';
 import AnswerFeedback from '../components/AnswerFeedback';
 import { FaRobot, FaUser } from 'react-icons/fa';
 
-const API_BASE_URL =
-  import.meta.env.MODE === "production"
-    ? "https://chat-app-backend-topaz-iota.vercel.app/api"
-    : "http://localhost:5000/api";
+const API_BASE_URL ="http://localhost:5000/api";
+
 
 const ChatInterface = () => {
   const { sessionId } = useParams();

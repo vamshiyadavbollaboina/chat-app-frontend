@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = 'https://chat-app-backend-topaz-iota.vercel.app/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const LandingPage = () => {
   const navigate = useNavigate();
