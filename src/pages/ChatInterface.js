@@ -7,7 +7,10 @@ import TableResponse from '../components/TableResponse';
 import AnswerFeedback from '../components/AnswerFeedback';
 import { FaRobot, FaUser } from 'react-icons/fa';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL =
+  import.meta.env.MODE === "production"
+    ? "https://chat-app-backend-topaz-iota.vercel.app/api"
+    : "http://localhost:5000/api";
 
 const ChatInterface = () => {
   const { sessionId } = useParams();
@@ -111,6 +114,7 @@ const ChatInterface = () => {
           </h2>
           <ThemeToggle />
         </header>
+
         <div className="flex-grow overflow-y-auto p-4 md:p-8 space-y-6 pb-28">
           {history.length === 0 && !isLoading && (
             <div className="text-center mt-20 text-gray-500 dark:text-gray-400">
@@ -125,11 +129,13 @@ const ChatInterface = () => {
                   ? <div className="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center text-white"><FaRobot /></div>
                   : <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white"><FaUser /></div>
                 }
-                <div className={`p-4 rounded-xl shadow-md relative max-w-xl
-                  ${message.type === 'user'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50'
-                  }`}
+
+                <div
+                  className={`p-4 rounded-xl shadow-md relative max-w-xl
+                    ${message.type === 'user'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50'
+                    }`}
                   title={new Date(message.timestamp).toLocaleString()}
                 >
                   <p className="whitespace-pre-wrap">{message.content}</p>
@@ -144,7 +150,8 @@ const ChatInterface = () => {
                         <button
                           key={option}
                           onClick={() => handleSendMessage(option)}
-                          className="px-3 py-1 bg-gray-200 dark:bg-gray-600 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-gray-500"
+                          className="px-3 py-1 bg-gray-200 dark:bg-gray-600 rounded-full text-sm
+                                     hover:bg-gray-300 dark:hover:bg-gray-500"
                         >
                           {option}
                         </button>
@@ -176,7 +183,8 @@ const ChatInterface = () => {
 
           <div ref={chatEndRef}></div>
         </div>
-          <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+
+        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
       </main>
     </div>
   );

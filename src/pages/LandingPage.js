@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-const API_BASE_URL = 'http://localhost:5000/api';
+
+const API_BASE_URL = 'https://chat-app-backend-topaz-iota.vercel.app/api';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const LandingPage = () => {
       navigate(`/chat/${data.sessionId}`);
     } catch (error) {
       console.error("Error starting new chat:", error);
-      alert("Could not connect to backend server. Please ensure the backend is running on port 5000.");
+      alert("Could not connect to backend server. Please ensure the backend is running.");
     }
   };
 
