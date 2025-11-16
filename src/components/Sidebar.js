@@ -60,7 +60,6 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   return (
     <div className={`flex-shrink-0 h-screen transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-72'} bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border-r dark:border-gray-700 overflow-y-auto fixed md:static z-20`}>
       <div className="p-4 flex flex-col h-full">
-        {/* Header */}
         <div className="flex justify-between items-center mb-4">
           {!isCollapsed && <h1 className="text-xl font-bold dark:text-white">Chat App</h1>}
           <button onClick={toggleSidebar} className="p-1 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-200">
